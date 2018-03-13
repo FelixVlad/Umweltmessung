@@ -35,7 +35,7 @@ namespace Umweltmessung
 
             Console.WriteLine("Weather in {0}: ", weatherResponse.Name);
             Console.WriteLine("Temperature : {0} °C",  weatherResponse.Main.Temp);
-            Console.WriteLine("Pressure : {0} mbar", weatherResponse.Main.Pressure);
+          
 
             Console.ReadLine();
         }

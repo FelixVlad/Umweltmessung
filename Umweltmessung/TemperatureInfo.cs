@@ -11,6 +11,6 @@ namespace Umweltmessung
     public class TemperatureInfo
     {
         public float Temp { get; set; }
-        public float Pressure { get; set; }
+       
     }
 }
