@@ -6,6 +6,7 @@ using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using WetterApp.WeatherMeasurements;
 
 namespace WetterApp
 {
@@ -14,29 +15,29 @@ namespace WetterApp
         static void Main(string[] args)
         {
             Console.WriteLine("Enter a amount of days, please!");
-
-            var tage = Convert.ToInt32(Console.ReadLine());
+   
+            var dayCount = Convert.ToInt32(Console.ReadLine());
 
             var luft = new LuftDruck();
             var nieder = new Niederschlag();
-            var temperatur = new Temperatur();
+            var temperatur = new Temperatur(dayCount);
 
-            if(tage <= 366){
-                var luftArray = luft.GetRandomLuftDruckArray(tage);
-                var niederArray = nieder.getRandomNiederschlagArray(tage);
-                var temperaturArray = temperatur.GetRandomTemperaturArray(tage);
+            if (dayCount <= 366 && dayCount >= 0)
+            {
+                temperatur.GetTemperatur();
+                Temperatur.PrintArray();
+                Temperatur.PrintMiddleValue();
 
-                LuftDruck.ShowLuftDruck(luftArray);
-                Niederschlag.ShowNiederschlag(niederArray);
-                temperatur.ShowTemperatur(temperaturArray);
+                Console.WriteLine("Weather in the last {0} days: ", dayCount);
+
+                Console.WriteLine("Enter an exact tag: ");
+
             }
             else
             {
                 Console.WriteLine("Max 366 days!");
             }
-           
-            Console.ReadKey();        
+        Console.ReadKey();        
         }
-
     }
 }
