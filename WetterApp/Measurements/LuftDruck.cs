@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WetterApp.WeatherMeasurements
+namespace WetterApp.Measurements
 {
    public class LuftDruck
    {
@@ -22,25 +22,25 @@ namespace WetterApp.WeatherMeasurements
            this.dayCount = dayCount;
        }
 
-       public List<int> GetPrecipitation()
+       public List<int> GetPressure()
        {
-           var temperaturRandomizer = new Random();
+           var tluftDruckRandomizer = new Random();
 
-           for (var i = _minValue; i < dayCount; i++)
+           for (var i = 0; i < dayCount; i++)
            {
-               luftDruck.Add(temperaturRandomizer.Next(_maxValue));
+               luftDruck.Add(tluftDruckRandomizer.Next(_minValue, _maxValue));
            }
 
            return luftDruck;
        }
 
-       public static void PrintArray()
+       public void PrintArray()
        {
            foreach (var x in luftDruck)
                Console.WriteLine("Day {0} - Air pressure: {1} mbar", luftDruck.IndexOf(x) + 1, x);
        }
 
-       public static void PrintMiddleValue()
+       public void PrintMiddleValue()
        {
            Console.WriteLine("Average air pressure: {0} mbar", luftDruck.Sum() / luftDruck.Count);
        }

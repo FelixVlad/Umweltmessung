@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WetterApp.WeatherMeasurements
+namespace WetterApp.Measurements
 {
     class Niederschlag
     {
@@ -24,23 +24,23 @@ namespace WetterApp.WeatherMeasurements
 
         public List<int> GetPrecipitation()
         {
-            var temperaturRandomizer = new Random();
+            var precipitationRandomizer = new Random();
 
-            for (var i = _minValue; i < dayCount; i++)
+            for (var i = 0; i < dayCount; i++)
             {
-                niederschlag.Add(temperaturRandomizer.Next(_maxValue));
+                niederschlag.Add(precipitationRandomizer.Next(_minValue, _maxValue));
             }
 
             return niederschlag;
         }
 
-        public static void PrintArray()
+        public void PrintArray()
         {
             foreach (var x in niederschlag)
                 Console.WriteLine("Day {0} - Precipitation: {1} mm", niederschlag.IndexOf(x) + 1, x);
         }
 
-        public static void PrintMiddleValue()
+        public void PrintMiddleValue()
         {
             Console.WriteLine("Average precipitation: {0} mm", niederschlag.Sum() / niederschlag.Count);
         }

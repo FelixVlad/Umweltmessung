@@ -41,11 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="WeatherMeasurements\Niederschlag.cs" />
+    <Compile Include="Measurements\Niederschlag.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WeatherMeasurements\LuftDruck.cs" />
-    <Compile Include="WeatherMeasurements\Temperatur.cs" />
+    <Compile Include="Measurements\LuftDruck.cs" />
+    <Compile Include="Measurements\Temperatur.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
