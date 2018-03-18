@@ -41,12 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands.cs" />
     <Compile Include="Measurements\IMeasurable.cs" />
     <Compile Include="Measurements\Precipitation.cs" />
+    <Compile Include="Models\Day.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Measurements\AirPressure.cs" />
     <Compile Include="Measurements\Temperature.cs" />
+    <Compile Include="Repository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

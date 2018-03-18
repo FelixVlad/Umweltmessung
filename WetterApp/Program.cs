@@ -13,7 +13,7 @@ namespace WetterApp
     class Program
     {
         static void Main(string[] args)
-        {  
+        {
             // The string that will represent the entered command.
             // Will be a substring of input.
             var command = string.Empty;
@@ -36,105 +36,29 @@ namespace WetterApp
                 Console.Write(">");
                 var input = Console.ReadLine();
 
-                if (input == null) continue;
+                if (string.IsNullOrWhiteSpace(input))
+                    Environment.Exit(0);
+
                 command = input.Substring(0, 2);
 
                 switch (command.ToUpper())
                 {
                     case "TC":
                     {
-                        Console.WriteLine("<Temperature>");
-                        Console.WriteLine("Enter a amount of days, please!");
-                        try
-                        {
-                            var dayCount = Convert.ToInt32(Console.ReadLine());
-
-                            if (dayCount <= 366 && dayCount > 0)
-                            {
-                                Console.WriteLine("Weather in the last {0} days: ", dayCount);
-
-                                var temperature = new Temperature(dayCount);
-                                temperature.GetWeatherDates();
-                                temperature.PrintArray();
-                                temperature.PrintMiddleValue();
-
-                                //Console.WriteLine("Enter an exact tag: ");
-                            }
-                            else
-                            {
-                                Console.WriteLine("There was an error processing the request.");
-                                Console.WriteLine("Max days number of the days is 366");
-                            }
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine("{0} Please, make sure that you entered a number or try again later.", e);
-                        }
-                      break;
+                        Commands.GetTemperature(command);
+                        break;
                     }
 
                     case "AP":
                     {
-                        Console.WriteLine("<Air Pressure>");
-                        Console.WriteLine("Enter a amount of days, please!");
-                        try
-                        {
-                            var dayCount = Convert.ToInt32(Console.ReadLine());
-
-                            if (dayCount <= 366 && dayCount > 0)
-                            {
-                                Console.WriteLine("Air pressure in the last {0} days: ", dayCount);
-
-                                var airPressure = new AirPressure(dayCount);
-                                airPressure.GetWeatherDates();
-                                airPressure.PrintArray();
-                                airPressure.PrintMiddleValue();
-
-                                //Console.WriteLine("Enter an exact tag: ");
-                            }
-                            else
-                            {
-                                Console.WriteLine("There was an error processing the request.");
-                                Console.WriteLine("Max days number of the days is 366");
-                            }
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine("{0} Please, make sure that you entered a number or try again later.", e.Message);
-                        }
+                        Commands.GetAirPressure();
                         break;
                     }
                     case "PM":
                     {
-                        Console.WriteLine("<Precipitation>");
-                        Console.WriteLine("Enter a amount of days, please!");
-                        try
-                        {
-                            var dayCount = Convert.ToInt32(Console.ReadLine());
-
-                            if (dayCount <= 366 && dayCount > 0)
-                            {
-                                Console.WriteLine("Air pressure in the last {0} days: ", dayCount);
-
-                                var niederschlag = new Precipitation(dayCount);
-                                niederschlag.GetWeatherDates();
-                                niederschlag.PrintArray();
-                                niederschlag.PrintMiddleValue();
-
-                                //Console.WriteLine("Enter an exact tag: ");
-                            }
-                            else
-                            {
-                                Console.WriteLine("There was an error processing the request.");
-                                Console.WriteLine("Max days number of the days is 366");
-                            }
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine("{0} Please, make sure that you entered a number or try again later.", e.Message);
-                        }
+                        Commands.GetPrecipitations();
                         break;
-                        }
+                    }
                     case "EX":
                     {
                         Console.WriteLine("Application closing...");
@@ -147,9 +71,10 @@ namespace WetterApp
                         break;
                     }
                 }
-            } 
+            }
+
             // Exit the application with exit code 0 (no errors).
-            Environment.Exit(0);  
+            Environment.Exit(0);
         }
     }
 }
