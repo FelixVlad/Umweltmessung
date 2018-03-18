@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WetterApp.Models;
 
-namespace WetterApp
+namespace WetterApp.Operations
 {
     public static class DaysGenerator
     {
@@ -18,7 +15,6 @@ namespace WetterApp
             {
                 days.Add(new Day(rnd.Next(0, 10), rnd.Next(800, 1100), rnd.Next(0, 30)));
             }
-
             return days;
         }
     }

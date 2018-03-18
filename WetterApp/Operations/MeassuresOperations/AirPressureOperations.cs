@@ -1,56 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WetterApp.Models;
 
-namespace WetterApp
+namespace WetterApp.Operations.MeassuresOperations
 {
-    public static class PrecipitationsOperations
+    public static class AirPressureOperations
     {
-        public static void CommandSwitchPM(string input, List<Day> dayList)
+        public static void CommandSwitchAP(string input, List<Day> dayList)
         {
             int numOfDays;
             IEnumerable<Day> days;
-            int precipitationsSum = 0;
+            var airPressureSum = 0;
             switch (input.ToUpper())
             {
-                case "AA":
+                case "AD":
                     Console.WriteLine("Enter amount of days:");
                     numOfDays = WeatherOperations.GetNumberOfDays(Console.ReadLine());
                     days = dayList.Take(numOfDays);
                     foreach (var day in days)
                     {
-                        Console.WriteLine(day.Precipitation);
+                        Console.WriteLine(day.AirPressure);
                     }
                     break;
-                case "BB":
+                case "CD":
                     Console.WriteLine("Enter day number:");
                     var dayNumber = WeatherOperations.GetNumberOfDays(Console.ReadLine());
-                    Console.WriteLine(dayList[dayNumber - 1].Precipitation);
+                    Console.WriteLine(dayList[dayNumber - 1].AirPressure);
                     break;
-                case "CC":
+                case "AF":
                     Console.WriteLine("Enter amount of days:");
                     numOfDays = WeatherOperations.GetNumberOfDays(Console.ReadLine());
                     days = dayList.Take(numOfDays);
                     foreach (var day in days)
                     {
-                        precipitationsSum += day.Precipitation;
+                        airPressureSum += day.AirPressure;
                     }
 
-                    var average = precipitationsSum / days.Count();
+                    var average = airPressureSum / days.Count();
                     Console.WriteLine("Average: " + average);
                     break;
-                case "DD":
+                case "DF":
                     days = dayList.Take(10);
                     foreach (var day in days)
                     {
-                        Console.WriteLine(day.Precipitation);
-                        precipitationsSum += day.Precipitation;
+                        Console.WriteLine(day.AirPressure);
+                        airPressureSum += day.AirPressure;
                     }
 
-                    var average2 = precipitationsSum / days.Count();
+                    var average2 = airPressureSum / days.Count();
                     Console.WriteLine("Average: " + average2);
                     Console.WriteLine();
                     break;

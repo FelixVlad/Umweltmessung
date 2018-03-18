@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using WetterApp.Models;
+using WetterApp.Operations;
 
 namespace WetterApp
 {
@@ -16,12 +17,34 @@ namespace WetterApp
         {
             var days = DaysGenerator.GetDays();
 
-            Console.WriteLine("Welcome to our meteo software");
-            Console.WriteLine("Please enter one of the following commands: TC, AP, PM");
-            Console.WriteLine("Or press Enter to exit the program");
-            var input = Console.ReadLine();
+            Console.WriteLine("============================================");
+            Console.WriteLine("Welcome to the Weather App!");
+            Console.WriteLine("============================================");
+            // The string that will represent the entered command.
+            // Will be a substring of input.
 
-            WeatherOperations.GetInfo(input, days);
+            var command = string.Empty;
+            Console.WriteLine("Choose a command(first two letters): ");
+            Console.WriteLine("--------------------------------------------");
+            Console.WriteLine("tc : <Temperature> - Temperature in ∘C");
+            Console.WriteLine("ap : <Air Pressure> - Air Pressure in mbar");
+            Console.WriteLine("pm : <Precipitation> - Precipitation in mm");
+            Console.WriteLine("--------------------------------------------");
+            Console.WriteLine("ex : - Exit");
+            Console.WriteLine("============================================");
+
+            while (command.ToUpper() != "EX")
+            {
+                Console.Write(">");
+                var input = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(input))
+                    Environment.Exit(0);
+
+                command = input.Substring(0, 2);
+                WeatherOperations.GetInfo(input, days);
+            }
+            Environment.Exit(0);
         }
     }
 }
