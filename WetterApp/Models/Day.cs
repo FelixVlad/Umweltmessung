@@ -15,8 +15,8 @@ namespace WetterApp.Models
             Temperature = temperature;
         }
 
-        private int Precipitation { get; set; }
-        private int AirPressure { get; set; }
-        private int Temperature { get; set; }
+        public int Precipitation { get; set; }
+        public int AirPressure { get; set; }
+        public int Temperature { get; set; }
     }
 }
