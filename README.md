@@ -15,17 +15,26 @@ Der Anwender soll außerdem die folgenden Möglichkeiten haben:
 Funktionale Anforderungen:
 
 •	Die Anwendung soll eine Menusteuerung haben (reiner Textmodus)
+
 •	Über einen Menüpunkt sollen einzelne Messwerte und/oder die Mittelwerte abgefragt und angezeigt werden können.
+
 •	Auf Wunsch soll hier eine Veränderung einzelner Messwerte möglich sein.
+
 •	Als Erweiterung sollen alle aufgenommenen Daten incl. der Mittelwerte in einer Datei gespeichert werden.
+
 •	Zusätzliche sinnvolle Erweiterungen sind erwünscht aber keine Pflicht!
 
 Nicht-funktionale Anforderungen:
 
 •	Achten Sie auf 
-o	Robustheit, 
-o	(Usability)
-o	Kommentare, 
-o	SourceCode-Design 
-o	und eine sinnvolle Benutzung des Debuggers!
+
+  o	Robustheit, 
+
+  o	(Usability)
+
+  o	Kommentare, 
+
+  o	SourceCode-Design 
+
+  o	und eine sinnvolle Benutzung des Debuggers!
 
