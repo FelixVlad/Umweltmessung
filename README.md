@@ -1,6 +1,9 @@
 Arbeitsauftrag: Umweltmessung
+
 Szenario
+
 Für die Dimensionierung eines Abwasserkanals werden Umweltmessungen durchgeführt. Dazu werden pro Tag folgenden Daten gemessen:
+
 1.	Niederschlagsmenge in Liter/m2
 2.	Temperatur in Grad Celsius
 3.	Luftdruck in bar
