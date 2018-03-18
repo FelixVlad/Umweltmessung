@@ -13,14 +13,13 @@ namespace WetterApp
     class Program
     {
         static void Main(string[] args)
-        {
+        {  
+            // The string that will represent the entered command.
+            // Will be a substring of input.
+            var command = string.Empty;
             Console.WriteLine("============================================");
             Console.WriteLine("Welcome to the Weather App!");
             Console.WriteLine("============================================");
-            // The string that will represent the entered command.
-            // Will be a substring of input.
-
-            var command = string.Empty;
             Console.WriteLine("Choose a command(first two letters): ");
             Console.WriteLine("--------------------------------------------");
             Console.WriteLine("tc : <Temperature> - Temperature in ∘C");
@@ -54,10 +53,10 @@ namespace WetterApp
                             {
                                 Console.WriteLine("Weather in the last {0} days: ", dayCount);
 
-                                var temperatur = new Temperatur(dayCount);
-                                temperatur.GetTemperatur();
-                                temperatur.PrintArray();
-                                temperatur.PrintMiddleValue();
+                                var temperature = new Temperature(dayCount);
+                                temperature.GetWeatherDates();
+                                temperature.PrintArray();
+                                temperature.PrintMiddleValue();
 
                                 //Console.WriteLine("Enter an exact tag: ");
                             }
@@ -86,8 +85,8 @@ namespace WetterApp
                             {
                                 Console.WriteLine("Air pressure in the last {0} days: ", dayCount);
 
-                                var airPressure = new LuftDruck(dayCount);
-                                airPressure.GetPressure();
+                                var airPressure = new AirPressure(dayCount);
+                                airPressure.GetWeatherDates();
                                 airPressure.PrintArray();
                                 airPressure.PrintMiddleValue();
 
@@ -117,8 +116,8 @@ namespace WetterApp
                             {
                                 Console.WriteLine("Air pressure in the last {0} days: ", dayCount);
 
-                                var niederschlag = new Niederschlag(dayCount);
-                                niederschlag.GetPrecipitation();
+                                var niederschlag = new Precipitation(dayCount);
+                                niederschlag.GetWeatherDates();
                                 niederschlag.PrintArray();
                                 niederschlag.PrintMiddleValue();
 
