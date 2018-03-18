@@ -35,6 +35,7 @@ namespace WetterApp
 
             while (command.ToUpper() != "EX")
             {
+                // Read the command.
                 Console.Write(">");
                 var input = Console.ReadLine();
 
@@ -44,6 +45,7 @@ namespace WetterApp
                 command = input.Substring(0, 2);
                 WeatherOperations.GetInfo(input, days);
             }
+            // Exit the application with exit code 0 (no errors).
             Environment.Exit(0);
         }
     }

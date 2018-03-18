@@ -11,25 +11,25 @@ namespace WetterApp.Operations.MeassuresOperations
         {
             int numOfDays;
             IEnumerable<Day> days;
-            int precipitationsSum = 0;
+            var precipitationsSum = 0;
             switch (input.ToUpper())
             {
                 case "AD":
-                    Console.WriteLine("Enter amount of days:");
+                    Console.WriteLine("Please, enter amount of days:");
                     numOfDays = WeatherOperations.GetNumberOfDays(Console.ReadLine());
                     days = dayList.Take(numOfDays);
                     foreach (var day in days)
                     {
-                        Console.WriteLine(day.Precipitation);
+                        Console.WriteLine("Day {0} - Precipitation: {1} mm", dayList.IndexOf(day) + 1, day.Precipitation);
                     }
                     break;
                 case "CD":
-                    Console.WriteLine("Enter day number:");
+                    Console.WriteLine("Please, enter day number:");
                     var dayNumber = WeatherOperations.GetNumberOfDays(Console.ReadLine());
-                    Console.WriteLine(dayList[dayNumber - 1].Precipitation);
+                    Console.WriteLine("Day {0} - Precipitation: {1} mm", dayNumber, dayList[dayNumber - 1].Precipitation);
                     break;
-                case "AT":
-                    Console.WriteLine("Enter amount of days:");
+                case "AP":
+                    Console.WriteLine("Please, enter amount of days:");
                     numOfDays = WeatherOperations.GetNumberOfDays(Console.ReadLine());
                     days = dayList.Take(numOfDays);
                     foreach (var day in days)
@@ -38,22 +38,28 @@ namespace WetterApp.Operations.MeassuresOperations
                     }
 
                     var average = precipitationsSum / days.Count();
-                    Console.WriteLine("Average: " + average);
+                    Console.WriteLine("Average precipitation for last {0} days: {1} mm", days.Count(), average);
                     break;
                 case "DF":
                     days = dayList.Take(10);
                     foreach (var day in days)
                     {
-                        Console.WriteLine(day.Precipitation);
+                        Console.WriteLine("Day {0} - Precipitation: {1} mm", dayList.IndexOf(day) + 1, day.Precipitation);
                         precipitationsSum += day.Precipitation;
                     }
 
-                    var average2 = precipitationsSum / days.Count();
-                    Console.WriteLine("Average: " + average2);
-                    Console.WriteLine();
+                    var defaultAverage = precipitationsSum / days.Count();
+                    Console.WriteLine("Average precipitation for last 10: {0} mm", defaultAverage);
                     break;
+                case "EX":
+                {
+                    Console.WriteLine("Application closing...");
+                    Environment.Exit(0);
+                    break;
+                }
                 default:
-                    Console.WriteLine("Wrong input");
+                    Console.WriteLine("Unknown Command " + input.ToLower());
+                    Console.WriteLine("Please, make sure you are using the correct command or try again later.");
                     break;
             }
         }
