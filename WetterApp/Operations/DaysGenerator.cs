@@ -11,7 +11,7 @@ namespace WetterApp.Operations
             var days = new List<Day>();
             var rnd = new Random();
 
-            for (var i = 0; i < 367; i++)
+            for (var i = 1; i < 367; i++)
             {
                 days.Add(new Day(rnd.Next(0, 10), rnd.Next(800, 1100), rnd.Next(0, 30)));
             }
