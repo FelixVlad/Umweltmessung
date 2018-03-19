@@ -7,7 +7,7 @@ namespace WetterApp.Operations.MeassuresOperations
 {
     public static class PrecipitationsOperations
     {
-        public static void CommandSwitchPM(string input, List<Day> dayList)
+        public static void CommandSwitchPm(string input, List<Day> dayList)
         {
             int numOfDays;
             IEnumerable<Day> days;
@@ -27,6 +27,43 @@ namespace WetterApp.Operations.MeassuresOperations
                     Console.WriteLine("Please, enter day number:");
                     var dayNumber = WeatherOperations.GetNumberOfDays(Console.ReadLine());
                     Console.WriteLine("Day {0} - Precipitation: {1} mm", dayNumber, dayList[dayNumber - 1].Precipitation);
+
+                    Console.WriteLine("Do you want to edit this entry? (Y/N)");
+                    var answer = Console.ReadLine();
+
+                    if (answer != null && (answer.ToUpper() == "Y" || answer.ToUpper() == "YES"))
+                    {
+                        Console.WriteLine("Please, enter a new value for this day: ");
+                        var newDay = WeatherOperations.GetNumberOfDays(Console.ReadLine());
+                        dayList[dayNumber - 1].Precipitation = newDay;
+
+                        Console.WriteLine("Value changed successfully! : Day {0} - Precipitation: {1} mm", dayNumber, dayList[dayNumber - 1].Precipitation);
+
+                        Console.WriteLine("Do you want to save changes in a external file? (Y/N)");
+                        var saveAnswer = Console.ReadLine();
+
+                        if (saveAnswer != null && (saveAnswer.ToUpper() == "Y" || saveAnswer.ToUpper() == "YES"))
+                        {
+                            SaveData.SavePrecipitation(dayList);
+                            Console.WriteLine("Value saved successfully!");
+                        }
+
+                        else if (saveAnswer != null && (saveAnswer.ToUpper() == "N" || saveAnswer.ToUpper() == "NO"))
+                        {
+                            Environment.Exit(0);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Unknown Command " + answer.ToLower());
+                            Console.WriteLine("Please, make sure you are using the correct command or try again later.");
+                        }
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("No changes commited");
+                    }
+
                     break;
                 case "AP":
                     Console.WriteLine("Please, enter amount of days:");
